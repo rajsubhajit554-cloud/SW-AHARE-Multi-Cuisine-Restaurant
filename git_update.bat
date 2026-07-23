@@ -1,35 +1,35 @@
 @echo off
-echo ====================================================
-echo      SW AHARE Multi-Cuisine Restaurant Git Update
-echo ====================================================
+title Git Update Tool - SW AHARE Multi-Cuisine Restaurant
+color 0A
+
+echo ======================================================================
+echo          SW AHARE Multi-Cuisine Restaurant - Git Auto Update          
+echo ======================================================================
 echo.
 
-:: Check if git repository is initialized
-if not exist ".git" (
-    echo Initializing Git repository...
-    git init
-    git branch -M main
-    git remote add origin https://github.com/rajsubhajit554-cloud/SW-AHARE-Multi-Cuisine-Restaurant.git
-)
+:: Check git status
+git status
 
-:: Get commit message from user or set default
-set /p commit_msg="Enter commit message (Press Enter for 'Update website content'): "
+echo.
+echo ----------------------------------------------------------------------
+set /p commit_msg="Enter commit message (or press Enter for 'Update website content'): "
 if "%commit_msg%"=="" set commit_msg=Update website content
 
 echo.
-echo Adding files to Git...
+echo [1/3] Adding all updated files...
 git add .
 
 echo.
-echo Committing changes...
+echo [2/3] Committing changes...
 git commit -m "%commit_msg%"
 
 echo.
-echo Pushing changes to GitHub repository...
-git push -u origin main
+echo [3/3] Pushing to GitHub repository...
+git push origin main
 
 echo.
-echo ====================================================
-echo Git update finished successfully!
-echo ====================================================
+echo ======================================================================
+echo [SUCCESS] Git update completed successfully!
+echo ======================================================================
+echo.
 pause
